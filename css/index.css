@@ -1,0 +1,665 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 30px;
+    position: fixed;
+    min-width: 920px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*z-index: 20;*/
+}
+
+.nav .meau1 {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #222;
+    transition: bottom 0.5s;
+    z-index: 10;
+}
+
+.nav .meau1.current {
+    bottom: -30px;
+}
+
+.nav .meau1::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    background-color: rgba(225, 225, 225, 0.3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav .meau1:hover::after {
+    height: 100%;
+    transition: height 0.4s;
+}
+
+.nav .meau2 {
+    position: absolute;
+    width: 3000px;
+    margin-left: -150px;
+    margin-top: -100px;
+    top: 150%;
+    left: 150%;
+    z-index: 50;
+    /*opacity:0;*/
+    transition: top .5s, left .5s;
+}
+
+.nav .meau2.current {
+    top: 50%;
+    left: 50%;
+}
+
+.nav .meau2 ol {
+    transition: transform 0.5s;
+}
+
+.meau2 ol li {
+    // background-color: skyblue;
+    float: left;
+    width: 300px;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 200px;
+}
+
+.meau2 ol li.current a {
+    color: rgba(225, 225, 225, 1);
+}
+
+.meau2 ol li a {
+    color: rgba(225, 225, 225, 0.4);
+}
+
+.nav .meau3 {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-clip: content-box;
+    position: relative;
+    overflow: hidden;
+    margin-left: 100%;
+    margin-top: 100%;
+    transition: margin 0.5s;
+    cursor: crosshair;
+}
+
+.nav .meau3.current {
+    margin: 0px;
+}
+
+.meau3 ul {
+    position: absolute;
+    // top: 50%;
+    left: 50%;
+    width: 4000px;
+    height: 2000px;
+    margin-top: -900px;
+    margin-left: -1700px;
+    transform-origin: 1700px center;
+    transition: transform .5s;
+    transform: rotate(-45deg) translateX(0%);
+}
+
+.meau3 ul li {
+    width: 200px;
+    height: 100%;
+    box-sizing: border-box;
+    border-left: 1px dashed #fff;
+    float: left;
+    position: relative;
+}
+
+.meau3 li a {
+    display: block;
+    width: 180px;
+    height: 180px;
+    background-color: rgba(225, 225, 225, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 180px;
+    overflow: hidden;
+}
+
+.meau3 li a span {
+    font-size: 50px;
+    color: rgba(225, 225, 225, 0.3);
+    display: inline-block;
+    transform: rotate(45deg);
+}
+
+.meau3 li a img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: yellow;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: top 0.5s;
+}
+
+.meau3 li.current a span {
+    color: rgba(225, 225, 225, 1);
+}
+
+.meau3 li.current a img {
+    top: 0;
+}
+
+.nav .meau4 {
+    width: 100%;
+    height: 50px;
+    margin-bottom: -18px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #000;
+    z-index: 2;
+    transition: margin-bottom 0.5s;
+    border-top: 1px solid rgba(225, 225, 225, 0.1);
+}
+
+.nav .meau4.current {
+    margin-bottom: 0px;
+}
+
+.meau4 ol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.meau4 ol li {
+    float: left;
+    width: 80px;
+    height: 48 px;
+    font-size: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 900;
+    margin-top: 2px;
+}
+
+.meau4 .line {
+    width: 80px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    transition: transform 0.5s;
+}
+
+.meau4 .block {
+    width: 80px;
+    height: 48px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    margin-left: -200px;
+    transition: transform .3s;
+}
+
+
+/* load界面*/
+
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    top: 0px;
+    z-index: 10;
+    display: block;
+    transition: all .5s;
+    overflow: hidden;
+}
+
+.loading.current {
+    top: -100%;
+}
+
+.loading .con {
+    text-align: center;
+    font-size: 7vh;
+    color: #fff;
+    padding-top: 30vh;
+}
+
+.loading .con div:nth-child(2) {
+    margin-top: 4vh;
+}
+
+.loading .con i {
+    display: inline-block;
+    animation: upDown 1s infinite linear alternate;
+}
+
+.loading .con b {
+    font-size: 6vh;
+    display: inline-block;
+    animation: upupDown 3s infinite;
+}
+
+.loading .con i:nth-child(1),
+.loading .con b:nth-child(1) {
+    animation-delay: 0.2s
+}
+
+.loading .con i:nth-child(2),
+.loading .con b:nth-child(5) {
+    animation-delay: 1s
+}
+
+.loading .con i:nth-child(3),
+.loading .con b:nth-child(7) {
+    animation-delay: 1.4s
+}
+
+.loading .con i:nth-child(4),
+.loading .con b:nth-child(10) {
+    animation-delay: 2s
+}
+
+.loading .con i:nth-child(5),
+.loading .con b:nth-child(2) {
+    animation-delay: 0.4s
+}
+
+.loading .con i:nth-child(6),
+.loading .con b:nth-child(4) {
+    animation-delay: 0.8s
+}
+
+.loading .con i:nth-child(7),
+.loading .con b:nth-child(6) {
+    animation-delay: 1.2s
+}
+
+.loading .con i:nth-child(8),
+.loading .con b:nth-child(9) {
+    animation-delay: 1.8s
+}
+
+.loading .con i:nth-child(9),
+.loading .con b:nth-child(8) {
+    animation-delay: 1.6s
+}
+
+.loading .con i:nth-child(10),
+.loading .con b:nth-child(3) {
+    animation-delay: 0.6s
+}
+
+@keyframes upupDown {
+    60% {
+        transform: translate3d(0, -80%, 0) rotate(720deg);
+    }
+    66% {
+        transform: translate3d(0, 0, 0) rotate(720deg);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotate(720deg);
+    }
+}
+
+@keyframes upDown {
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(20%)
+    }
+    100% {
+        transform: translateY(-20%)
+    }
+}
+
+
+/*内容部分*/
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    padding-top: 32px;
+    margin-top: -32px;
+    top: 0;
+    transition: top 0.5s;
+}
+
+.swiper-container.current {
+    top: -100%;
+}
+
+.swiper-slide {
+    transition: all .5s;
+    position: relative;
+}
+
+.first .circle {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 20vh auto;
+    z-index: 2;
+}
+
+.swiper-slide.current .first .circle div {
+    opacity: 1;
+}
+
+.swiper-slide.current .first .circle .box3 {
+    opacity: 0.3;
+}
+
+.swiper-slide .first .circle .box4 {
+    width: 154px;
+    height: 154px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #FA6A87;
+    text-align: center;
+}
+
+.first .circle .box3 {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: dashed 2px #d3d2ce;
+}
+
+.first .circle .box4 p {
+    margin-top: -8px;
+    font: 500 12px/85px '微软雅黑';
+    color: #fff;
+    cursor: pointer;
+}
+
+.first .circle .box4 img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.first .circle .box2 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 25px solid yellow;
+    border-color: rgba(210, 205, 205, .2) rgba(210, 205, 205, .2) #d3d2ce #d3d2ce;
+}
+
+.first .circle .box1 {
+    width: 280px;
+    height: 280px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 8px solid #d3d2ce;
+    border-color: #d3d2ce #d3d2ce rgba(210, 205, 205, .2) rgba(210, 205, 205, .2);
+}
+
+.swiper-slide .first .con {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 20vh;
+    left: 50vw;
+    margin-left: -150px;
+    margin-top: -60px;
+    /*background-color: pink;*/
+    /*transition:all .5s;*/
+    transform: translate(240px);
+    /*transform:translate(0px) rotate(45deg);*/
+}
+
+.swiper-slide.current .first .con {
+    transform: translate(0px);
+    transition: all .5s;
+}
+
+.swiper-slide .first .con>div {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: yellow;
+    text-align: center;
+    /*transition:all 1s .5s;*/
+    transform-origin: 250% center;
+    transform: translate(-250%) rotate(0deg);
+}
+
+.swiper-slide.current .first .con>div {
+    transition: all 1s .5s;
+}
+
+.swiper-slide.current .first .con>div:nth-child(1) {
+    transform: translate(-250%) rotate(45deg);
+}
+
+.swiper-slide.current .first .con>div:nth-child(2) {
+    transform: translate(-250%) rotate(135deg);
+}
+
+.swiper-slide.current .first .con>div:nth-child(3) {
+    transform: translate(-250%) rotate(225deg);
+}
+
+.swiper-slide.current .first .con>div:nth-child(4) {
+    transform: translate(-250%) rotate(315deg);
+}
+
+.swiper-slide .first .con>div>div {
+    width: 200px;
+    height: 60px;
+    /*background-color: red;*/
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -30px;
+    /*本身高度一半*/
+    transform-origin: 260px;
+    /*圆的半径+本身宽度*/
+    transform: rotate(-45deg);
+}
+
+.swiper-slide .first .con>div:nth-child(4)>div {
+    transform: rotate(45deg);
+}
+
+.swiper-slide .first .con>div:nth-child(2)>div {
+    transform-origin: -60px;
+    /*圆的半径*/
+    left: 100%;
+    transform: rotate(-135deg);
+}
+
+.swiper-slide .first .con>div:nth-child(3)>div {
+    transform-origin: -60px;
+    left: 100%;
+    transform: rotate(135deg);
+}
+
+.swiper-slide .first .con>div>div .content {
+    width: 0;
+    height: 100%;
+    float: right;
+    background-color: yellow;
+    /*transition: width .3s 1.5s;*/
+    overflow: hidden;
+    margin-right: 20px;
+    text-align: center;
+    line-height: 30px;
+    font: 20px;
+    padding-top: 60px;
+}
+
+.swiper-slide .first .con>div:nth-child(2)>div .content,
+.swiper-slide .first .con>div:nth-child(3)>div .content {
+    float: left;
+    height: 100%;
+    margin-left: 20px;
+}
+
+.swiper-slide.current .first .con>div>div .content {
+    width: 100%;
+    padding-top: 0px;
+    transition: width .3s 1.5s, padding .3s 1.8s;
+}
+
+
+/*第二页*/
+
+.swiper-slide .second {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0px;
+    left: 0;
+}
+    
+  .swiper-slide .second  .line {
+        width: 80%;
+        height: 2px;
+        position: absolute;
+        background-color: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+  .swiper-slide .second  .line [class^='point'] {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        top: -5px;
+        left: 0;
+    }
+    
+   .swiper-slide .second .line .point2 {
+        left: 25%;
+    }
+    
+   .swiper-slide .second .line .point3 {
+        left: 50%
+    }
+    
+   .swiper-slide .second .line .point4 {
+        left: 75%
+    }
+    
+  .swiper-slide .second  .line .point5 {
+        left: 100%
+    }
+    
+   .swiper-slide .second .line [class^='point'] [class^='line'] {
+        height: 0;
+        background-color: #fff;
+        width: 2px;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        /*transition: all 2s;*/
+    }
+    
+   .swiper-slide .second .line [class^='point'] .line3,
+   .swiper-slide .second .line [class^='point'] .line5 {
+        top: auto;
+        bottom: 5px;
+    }
+    
+    .swiper-slide.current .second [class^='point'] div[class^='line'] {
+        height: 6vw;
+        transition: all .3s;
+    }
+    
+   .swiper-slide .second .con{
+        width: 12vw;
+        height: 4vw;
+        position: absolute;
+        left:-6vw;
+        top: 6vw;
+        overflow: hidden;
+    }
+   .swiper-slide .second  .line3 .con,
+   .swiper-slide .second  .line5 .con{
+        top:auto;
+        bottom: 6vw;
+    }
+   .swiper-slide .second .con::after{
+        content: 'js赛高';
+        display: block;
+        width: 100%;
+        /*height: 100%;*/
+        height: 4vw;
+        display: block;
+        background-color: #fff;
+        /*transition: transform 1s 2s;*/
+        transform: translateY(-100%);
+        text-align: center;
+        line-height: 4vw;
+        border-radius: 8px;
+    }
+    .swiper-slide .second .line3 .con::after,
+    .swiper-slide .second .line5 .con::after{
+        transform: translateY(100%);
+    }
+    // .swiper-slide.current .second .con::after{
+    //     transform: translateY(100%);
+    //     transition: transform .5s .3s;
+    // }
+    /*.second:hover .line [class^='point'] .line3 .con::after,*/
+    .swiper-slide.current .second .line [class^='point'] [class^='line'] .con::after{
+        transform: translateY(0%);
+        transition: transform .5s .3s;
+    }
